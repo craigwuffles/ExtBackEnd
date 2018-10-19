@@ -94,7 +94,8 @@ const STRINGS = {
 };
 
 ext.
-  version(require('../package.json').version).
+//Jackson commented this out
+ // version(require('../package.json').version).
   option('-s, --secret <secret>', 'Extension secret').
   option('-c, --client-id <client_id>', 'Extension client ID').
   option('-o, --owner-id <owner_id>', 'Extension owner ID').
