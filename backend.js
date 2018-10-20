@@ -55,8 +55,11 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 const verboseLogging = true;
 const verboseLog = verboseLogging ? console.log.bind(console) : () => { };
 
-// Service state variables
+//port updating for the hapi server
 const PORT = process.env.PORT || 8081;
+
+
+// Service state variables
 const initialColor = color('#6441A4');      // super important; bleedPurple, etc.
 const serverTokenDurationSec = 30;          // our tokens for pubsub expire after 30 seconds
 const userCooldownMs = 1000;                // maximum input rate per user to prevent bot abuse
@@ -137,11 +140,11 @@ function getOption(optionName, environmentName, localValue) {
 const server = new Hapi.Server({
   host: '0.0.0.0',
   port: PORT,
-  tls: {
+  //tls: {
     // If you need a certificate, execute "npm run cert".
-    key: fs.readFileSync(path.resolve(__dirname, 'conf', 'server.key')),
-    cert: fs.readFileSync(path.resolve(__dirname, 'conf', 'server.crt')),
-  },
+  //  key: fs.readFileSync(path.resolve(__dirname, 'conf', 'server.key')),
+ //   cert: fs.readFileSync(path.resolve(__dirname, 'conf', 'server.crt')),
+ // },
   routes: {
     cors: {
       origin: ['*'],
