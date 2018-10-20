@@ -98,7 +98,7 @@ var ENV_OWNER_ID = 222147546;
 
 ext.
 //Jackson commented this out
- //version(require('../package.json').version).
+  version(require('../package.json').version).
   option('-s, --secret <secret>', 'Extension secret').
   option('-c, --client-id <client_id>', 'Extension client ID').
   option('-o, --owner-id 222147546', 'Extension owner ID').
@@ -138,8 +138,8 @@ const server = new Hapi.Server({
   port: 8081,
   tls: {
     // If you need a certificate, execute "npm run cert".
-    key: fs.readFileSync(path.resolve(__dirname, '..', 'conf', 'server.key')),
-    cert: fs.readFileSync(path.resolve(__dirname, '..', 'conf', 'server.crt')),
+    key: fs.readFileSync(path.resolve(__dirname, 'conf', 'server.key')),
+    cert: fs.readFileSync(path.resolve(__dirname, 'conf', 'server.crt')),
   },
   routes: {
     cors: {
