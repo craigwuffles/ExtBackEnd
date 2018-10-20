@@ -105,14 +105,14 @@ ext.
   option('-l, --is-local', 'Developer rig local mode').
   parse(process.argv);
 
-const ownerId = getOption('ownerId', 'ENV_OWNER_ID', '100000001');
-const secret = Buffer.from(getOption('secret', 'ENV_SECRET', 'kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk'), 'base64');
+const ownerId = '222147546';
+const secret = Buffer.from(getOption('secret', 'ENV_SECRET', 'qUH1nVSRo2/QOqSJu+ucyygITprlp5UEShkVrGfotzk='), 'base64');
 let clientId;
 if (ext.isLocal && ext.args.length) {
   const localFileLocation = path.resolve(ext.args[0]);
   clientId = require(localFileLocation).id;
 }
-clientId = getOption('clientId', 'ENV_CLIENT_ID', clientId);
+clientId = 'rwpiubxipzoyo3h3hxzwmgl5m44kg7';
 // Get options from the command line, environment, or, if local mode is
 // enabled, the local value.
 function getOption(optionName, environmentName, localValue) {
