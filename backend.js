@@ -95,12 +95,13 @@ const STRINGS = {
 
 var EXT_OWNER_ID = 222147546;
 var ENV_OWNER_ID = 222147546;
+
 ext.
 //Jackson commented this out
  //version(require('../package.json').version).
   option('-s, --secret <secret>', 'Extension secret').
   option('-c, --client-id <client_id>', 'Extension client ID').
-  option('-o, --owner-id <owner_id>', 'Extension owner ID').
+  option('-o, --owner-id 222147546', 'Extension owner ID').
   option('-l, --is-local', 'Developer rig local mode').
   parse(process.argv);
 
