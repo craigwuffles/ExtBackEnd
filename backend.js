@@ -400,6 +400,10 @@ function userIsInCooldown(opaqueUserId) {
 //here is the post reciever?
 (async () => {
 
+  // Start the server.
+  await server.start();
+  console.log(STRINGS.serverStarted, server.info.uri);
+
   // Handle a viewer request to cycle the color.
   server.route({
     method: 'POST',
@@ -415,8 +419,8 @@ function userIsInCooldown(opaqueUserId) {
   });
 
   // Start the server.
-  await server.start();
-  console.log(STRINGS.serverStarted, server.info.uri);
+ // await server.start();
+  //console.log(STRINGS.serverStarted, server.info.uri);
 
   // Periodically clear cool-down tracking to prevent unbounded growth due to
   // per-session logged-out user tokens.
