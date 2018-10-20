@@ -1,5 +1,32 @@
 {
   "name": "Color Picker Extension",
   "description": "this app picks colors.",
-  "repository": "https://github.com/craigwuffles/ExtBackEnd",
+  "scripts": {
+    "cert": "node bin/generate_cert.js server",
+    "start": "node services/backend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/craigwuffles/ExtBackEnd.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/craigwuffles/ExtBackEnd/issues"
+  },
+  "homepage": "https://github.com/craigwuffles/ExtBackEnd#readme",
+  "engines": {
+    "node": "8.11.3",
+    "npm" : "5.7.1"
+  },
+  "dependencies": {
+    "boom": "^7.2.0",
+    "color": "^3.0.0",
+    "commander": "^2.15.0",
+    "hapi": "^17.2.2",
+    "inert": "^5.1.0",
+    "jsonwebtoken": "^8.2.0",
+    "request": "^2.85.0",
+    "selfsigned": "^1.10.2"
+  }
 }
