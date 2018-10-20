@@ -93,23 +93,25 @@ const STRINGS = {
   invalidJwt: 'Invalid JWT',
 };
 
+var EXT_OWNER_ID = 222147546;
+var ENV_OWNER_ID = 222147546;
 ext.
 //Jackson commented this out
  //version(require('../package.json').version).
-  option('-s, --secret qUH1nVSRo2/QOqSJu+ucyygITprlp5UEShkVrGfotzk=', 'Extension secret').
-  option('-c, --client-id rwpiubxipzoyo3h3hxzwmgl5m44kg7', 'Extension client ID').
-  option('-o, --owner-id 222147546', 'Extension owner ID').
+  option('-s, --secret <secret>', 'Extension secret').
+  option('-c, --client-id <client_id>', 'Extension client ID').
+  option('-o, --owner-id <owner_id>', 'Extension owner ID').
   option('-l, --is-local', 'Developer rig local mode').
   parse(process.argv);
 
-const ownerId = getOption('ownerId', '222147546', '222147546');
-const secret = Buffer.from(getOption('secret', 'qUH1nVSRo2/QOqSJu+ucyygITprlp5UEShkVrGfotzk=', 'qUH1nVSRo2/QOqSJu+ucyygITprlp5UEShkVrGfotzk='), 'base64');
+const ownerId = getOption('ownerId', 'ENV_OWNER_ID', '100000001');
+const secret = Buffer.from(getOption('secret', 'ENV_SECRET', 'kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk'), 'base64');
 let clientId;
 if (ext.isLocal && ext.args.length) {
   const localFileLocation = path.resolve(ext.args[0]);
   clientId = require(localFileLocation).id;
 }
-clientId = getOption('clientId', 'rwpiubxipzoyo3h3hxzwmgl5m44kg7', clientId);
+clientId = getOption('clientId', 'ENV_CLIENT_ID', clientId);
 // Get options from the command line, environment, or, if local mode is
 // enabled, the local value.
 function getOption(optionName, environmentName, localValue) {
