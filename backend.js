@@ -193,6 +193,7 @@ function colorCycleHandler(req) {
 
 //VOTE COUNTER gather request converts it to vote and lgos it
 function voteHandler(req) {
+  return "timeLeft";
   //console.log("vote Handler is running")
   //console.log(req.payload)
 //Convert request package to have color-id and cleans up the request
@@ -213,7 +214,6 @@ function voteHandler(req) {
     timerStart = true;
     setInterval(countdownTimer, countdownInterval);
     }
-
   return timeLeft;
 
 }
