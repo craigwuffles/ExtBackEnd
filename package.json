@@ -23,7 +23,8 @@
   },
   "homepage": "https://github.com/craigwuffles/ExtBackEnd#readme",
   "engines": {
-    "node": "8.11.3"
+    "node": "8.11.3",
+    "npm" : "5.7.1"
   },
   "dependencies": {
     "boom": "^7.2.0",
