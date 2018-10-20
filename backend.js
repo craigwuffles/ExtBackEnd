@@ -133,9 +133,10 @@ function getOption(optionName, environmentName, localValue) {
   return option;
 }
 
+const PORT = process.env.PORT || 8081;
 const server = new Hapi.Server({
   host: 'localhost',
-  port: 8081,
+  port: PORT,
   tls: {
     // If you need a certificate, execute "npm run cert".
     key: fs.readFileSync(path.resolve(__dirname, 'conf', 'server.key')),
