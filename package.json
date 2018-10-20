@@ -3,14 +3,8 @@
   "version": "1.0.0",
   "main": "backend.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "cert": "node bin/generate_cert.js server",
-
-    "start": "npm run build && NODE_ENV=consul node ./build/index.js",
-    "start:dev": "nodemon src/index.js --exec babel-node --legacy-watch",
-    "clean": "rm -rf build && mkdir build",
-    "build-server": "babel -D -d ./build ./src -s",
-    "build": "npm run clean && npm run build-server"
+    "start": "node services/backend",
   },
   "repository": {
     "type": "git",
