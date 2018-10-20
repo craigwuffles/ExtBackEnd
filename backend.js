@@ -191,7 +191,8 @@ function colorCycleHandler(req) {
 }
 */
 function testvoteHandler(req) {
-  return "hello";
+  console.log("Hello");
+  return "helloD";
 }
 //VOTE COUNTER gather request converts it to vote and lgos it
 function voteHandler(req) {
@@ -398,6 +399,7 @@ function userIsInCooldown(opaqueUserId) {
 
 //here is the post reciever?
 (async () => {
+
   // Handle a viewer request to cycle the color.
   server.route({
     method: 'POST',
