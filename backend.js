@@ -106,7 +106,7 @@ ext.
   parse(process.argv);
 
 const ownerId = '222147546';
-const secret = Buffer.from(getOption('secret', 'ENV_SECRET', 'qUH1nVSRo2/QOqSJu+ucyygITprlp5UEShkVrGfotzk='), 'base64');
+const secret = Buffer.from('qUH1nVSRo2/QOqSJu+ucyygITprlp5UEShkVrGfotzk=', 'base64');
 let clientId;
 if (ext.isLocal && ext.args.length) {
   const localFileLocation = path.resolve(ext.args[0]);
