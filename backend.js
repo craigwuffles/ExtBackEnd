@@ -190,10 +190,11 @@ function colorCycleHandler(req) {
   return currentColor;
 }
 */
-
+function testvoteHandler(req) {
+  return "hello";
+}
 //VOTE COUNTER gather request converts it to vote and lgos it
 function voteHandler(req) {
-  return "timeLeft";
   //console.log("vote Handler is running")
   //console.log(req.payload)
 //Convert request package to have color-id and cleans up the request
@@ -401,7 +402,7 @@ function userIsInCooldown(opaqueUserId) {
   server.route({
     method: 'POST',
     path: '/color/vote',
-    handler: voteHandler,
+    handler: testvoteHandler,
   });
 
   // Handle a new viewer requesting the color.
