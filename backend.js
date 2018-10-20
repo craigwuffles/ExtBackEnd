@@ -56,6 +56,7 @@ const verboseLogging = true;
 const verboseLog = verboseLogging ? console.log.bind(console) : () => { };
 
 // Service state variables
+const PORT = process.env.PORT || 8081;
 const initialColor = color('#6441A4');      // super important; bleedPurple, etc.
 const serverTokenDurationSec = 30;          // our tokens for pubsub expire after 30 seconds
 const userCooldownMs = 1000;                // maximum input rate per user to prevent bot abuse
@@ -133,7 +134,6 @@ function getOption(optionName, environmentName, localValue) {
   return option;
 }
 
-const PORT = process.env.PORT || 8081;
 const server = new Hapi.Server({
   host: 'localhost',
   port: PORT,
