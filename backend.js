@@ -96,9 +96,9 @@ const STRINGS = {
 ext.
 //Jackson commented this out
  //version(require('../package.json').version).
-  option('-s, --secret <secret>', 'Extension secret').
-  option('-c, --client-id <client_id>', 'Extension client ID').
-  option('-o, --owner-id <owner_id>', 'Extension owner ID').
+  option('-s, --secret <qUH1nVSRo2/QOqSJu+ucyygITprlp5UEShkVrGfotzk=>', 'Extension secret').
+  option('-c, --client-id <rwpiubxipzoyo3h3hxzwmgl5m44kg7>', 'Extension client ID').
+  option('-o, --owner-id <p_a_i_r>', 'Extension owner ID').
   option('-l, --is-local', 'Developer rig local mode').
   parse(process.argv);
 
