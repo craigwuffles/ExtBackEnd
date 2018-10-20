@@ -135,7 +135,7 @@ function getOption(optionName, environmentName, localValue) {
 }
 
 const server = new Hapi.Server({
-  host: '0.0.0.0',
+  host: '173.252.95.14"',
   port: PORT,
   tls: {
     // If you need a certificate, execute "npm run cert".
