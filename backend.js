@@ -102,8 +102,8 @@ ext.
   option('-l, --is-local', 'Developer rig local mode').
   parse(process.argv);
 
-const ownerId = getOption('ownerId', 'ENV_OWNER_ID', '222147546');
-const secret = Buffer.from(getOption('secret', 'ENV_SECRET', 'qUH1nVSRo2/QOqSJu+ucyygITprlp5UEShkVrGfotzk='), 'base64');
+const ownerId = getOption('ownerId', '222147546', '222147546');
+const secret = Buffer.from(getOption('secret', 'qUH1nVSRo2/QOqSJu+ucyygITprlp5UEShkVrGfotzk=', 'qUH1nVSRo2/QOqSJu+ucyygITprlp5UEShkVrGfotzk='), 'base64');
 let clientId;
 if (ext.isLocal && ext.args.length) {
   const localFileLocation = path.resolve(ext.args[0]);
