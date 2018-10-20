@@ -1,5 +1,5 @@
 {
-  "name": "Color Picker Extension",
+  "name": "Color Picker Extension-",
   "description": "this app picks colors.",
   "scripts": {
     "cert": "node bin/generate_cert.js server",
