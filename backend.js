@@ -194,7 +194,7 @@ function colorCycleHandler(req) {
 }
 */
 //sends the vote data array back to the robot control center
-function voteResetHandler(req){
+function voteDataSender(req){
   return voteDict
 }
 //VOTE COUNTER gather request converts it to vote and lgos it
