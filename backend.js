@@ -142,8 +142,8 @@ const server = new Hapi.Server({
   port: PORT,
   //tls: {
     // If you need a certificate, execute "npm run cert".
-  //  key: fs.readFileSync(path.resolve(__dirname, 'conf', 'server.key')),
- //   cert: fs.readFileSync(path.resolve(__dirname, 'conf', 'server.crt')),
+    key: fs.readFileSync(path.resolve(__dirname, 'conf', 'server.key')),
+    cert: fs.readFileSync(path.resolve(__dirname, 'conf', 'server.crt')),
  // },
   routes: {
     cors: {
@@ -193,10 +193,7 @@ function colorCycleHandler(req) {
   return currentColor;
 }
 */
-function testvoteHandler(req) {
-  console.log("Hello");
-  return "helloD";
-}
+
 //VOTE COUNTER gather request converts it to vote and lgos it
 function voteHandler(req) {
   //console.log("vote Handler is running")
@@ -411,7 +408,7 @@ function userIsInCooldown(opaqueUserId) {
   server.route({
     method: 'POST',
     path: '/color/vote',
-    handler: testvoteHandler,
+    handler: voteHandler,
   });
 
   // Handle a new viewer requesting the color.
