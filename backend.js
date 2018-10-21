@@ -30,7 +30,7 @@ var voteDict = {
 
 
 //creating timer mechanism
-const resetTimeLength = 15000; //in milliseconds
+const resetTimeLength = 25000; //in milliseconds LENGTH OF THE VOTE MOST VAIRABLE ELEMENT!!!!!!!
 const countdownInterval = 250;
 var timerStart = false;
 var timeLeft = 0;
@@ -193,7 +193,10 @@ function colorCycleHandler(req) {
   return currentColor;
 }
 */
-
+//sends the vote data array back to the robot control center
+function voteResetHandler(req){
+  return voteDict
+}
 //VOTE COUNTER gather request converts it to vote and lgos it
 function voteHandler(req) {
   //console.log("vote Handler is running")
@@ -409,6 +412,13 @@ function userIsInCooldown(opaqueUserId) {
     method: 'POST',
     path: '/color/vote',
     handler: voteHandler,
+  });
+
+  //handle robot controlling code handler sends back vote details
+  server.route({
+    method: 'POST',
+    path: '/vote/data',
+    handler: voteDataSender,
   });
 
   // Handle a new viewer requesting the color.
