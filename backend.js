@@ -140,11 +140,11 @@ function getOption(optionName, environmentName, localValue) {
 const server = new Hapi.Server({
   host: '0.0.0.0',
   port: PORT,
-  //tls: {
+  tls: {
     // If you need a certificate, execute "npm run cert".
     key: fs.readFileSync(path.resolve(__dirname, 'conf', 'server.key')),
     cert: fs.readFileSync(path.resolve(__dirname, 'conf', 'server.crt')),
- // },
+  },
   routes: {
     cors: {
       origin: ['*'],
