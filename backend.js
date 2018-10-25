@@ -197,7 +197,7 @@ function robotCommandHandler(req) {
 function robotCommandSender(req){
   return robotCommand;
   //set robot command variable to empty to not resend single command
-  robotCommand =""
+  robotCommand ="none"
 
 }
 
