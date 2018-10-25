@@ -195,13 +195,18 @@ function robotCommandHandler(req) {
 
 //Send Last robot Command to Robot Controller
 function robotCommandSender(req){
- return robotCommand;
- robotCommand['command'] = 'none'
+  setTimeout(commandReset, .1)
+  return robotCommand;
+
   //set robot command ;variable to empty to not resend single command
 
 
 }
 
+function commandReset()
+{
+  robotCommand['command'] = 'none'
+}
 //-----------------------------VOTE HANDLERS-----------------------------------
 
 //sends the vote data array back to the robot control center
