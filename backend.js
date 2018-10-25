@@ -16,7 +16,7 @@
 
 
 //robot Command Control Variables
-var robotCommand
+var robotCommand = "none"
 
 
 //creating a voting dictionary
@@ -196,8 +196,8 @@ function robotCommandHandler(req) {
 //Send Last robot Command to Robot Controller
 function robotCommandSender(req){
   return robotCommand;
-  //set robot command variable to empty to not resend single command
-  robotCommand ="none"
+  //set robot command ;variable to empty to not resend single command
+  robotCommand ="none";
 
 }
 
@@ -441,7 +441,7 @@ function userIsInCooldown(opaqueUserId) {
   //Handle request for latest command from robot controller
   server.route({
     method: 'POST',
-    path: '/command/query',
+    path: '/color/moveQuery',
     handler: robotCommandSender,
   });
 
