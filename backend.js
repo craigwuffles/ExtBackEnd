@@ -195,7 +195,7 @@ function robotCommandHandler(req) {
 
 //Send Last robot Command to Robot Controller
 function robotCommandSender(req){
- return voteDict;
+ return "voteDict";
   //set robot command ;variable to empty to not resend single command
 
 
