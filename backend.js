@@ -16,7 +16,7 @@
 
 
 //robot Command Control Variables
-var robotCommand = {}
+var robotCommand = {'commands':'none'}
 
 
 //creating a voting dictionary
