@@ -16,7 +16,7 @@
 
 
 //robot Command Control Variables
-var robotCommand = "none"
+var robotCommand = {}
 
 
 //creating a voting dictionary
@@ -184,7 +184,7 @@ function robotCommandHandler(req) {
   command = payload.replace(/[{}:"]/g, "");
   //console.log(color_id)
   //set robot command variable to payload command
-  robotCommand = command;
+  robotCommand['command'] = command;
 
   console.log("New Command: " + command)
   //return nothing of use
@@ -195,7 +195,7 @@ function robotCommandHandler(req) {
 
 //Send Last robot Command to Robot Controller
 function robotCommandSender(req){
- return "voteDict";
+ return robotCommand;
   //set robot command ;variable to empty to not resend single command
 
 
