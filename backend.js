@@ -30,7 +30,7 @@ var voteDict = {
 
 
 //creating timer mechanism
-const resetTimeLength = 15000; //in milliseconds
+const resetTimeLength = 40000; //in milliseconds LENGTH OF THE VOTE MOST VAIRABLE ELEMENT!!!!!!!
 const countdownInterval = 250;
 var timerStart = false;
 var timeLeft = 0;
