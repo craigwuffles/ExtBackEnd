@@ -14,6 +14,11 @@
  *    limitations under the License.
  */
 
+
+//robot Command Control Variables
+var robotCommand = {'command':'none'}
+
+
 //creating a voting dictionary
 var voteDict = {
   a: 0,
@@ -30,7 +35,11 @@ var voteDict = {
 
 
 //creating timer mechanism
+<<<<<<< HEAD
 const resetTimeLength = 40000; //in milliseconds LENGTH OF THE VOTE MOST VAIRABLE ELEMENT!!!!!!!
+=======
+const resetTimeLength = 45000; //in milliseconds LENGTH OF THE VOTE MOST VAIRABLE ELEMENT!!!!!!!
+>>>>>>> 898c76ffb19636a486cf70d1b02b62da8a3e14eb
 const countdownInterval = 250;
 var timerStart = false;
 var timeLeft = 0;
@@ -152,6 +161,8 @@ const server = new Hapi.Server({
   },
 });
 
+
+
 // Verify the header and the enclosed JWT.
 function verifyAndDecode(header) {
   if (header.startsWith(bearerPrefix)) {
@@ -165,51 +176,63 @@ function verifyAndDecode(header) {
   }
   throw Boom.unauthorized(STRINGS.invalidAuthHeader);
 }
-/*
-function colorCycleHandler(req) {
-  console.log("color cycle handler running")
-  // Verify all requests.
-  const payload = verifyAndDecode(req.headers.authorization);
-  const { channel_id: channelId, opaque_user_id: opaqueUserId } = payload;
 
-  // Store the color for the channel.
-  let currentColor = channelColors[channelId] || initialColor;
 
-  // Bot abuse prevention:  don't allow a user to spam the button.
-  if (userIsInCooldown(opaqueUserId)) {
-    throw Boom.tooManyRequests(STRINGS.cooldown);
-  }
 
-  // Rotate the color as if on a color wheel.
-  verboseLog(STRINGS.cyclingColor, channelId, opaqueUserId);
-  currentColor = color(currentColor).rotate(colorWheelRotation).hex();
 
-  // Save the new color for the channel.
-  channelColors[channelId] = currentColor;
+//------------------------------------ handlers ---------------------------------------
 
-  // Broadcast the color change to all other extension instances on this channel.
-  attemptColorBroadcast(channelId);
+//NEW ROBOT COMMAND HANDLER Takes the sent command fro extenison and sets variable to command
+function robotCommandHandler(req) {
+  payload = JSON.stringify(req.payload);
+  command = payload.replace(/[{}:"]/g, "");
+  //console.log(color_id)
+  //set robot command variable to payload command
+  robotCommand['command'] = command;
 
-  return currentColor;
+  console.log("New Command: " + command)
+  //return nothing of use
+  return "Got Robot Command";
+
 }
-*/
 
+
+//Send Last robot Command to Robot Controller
+function robotCommandSender(req){
+  setTimeout(commandReset, .1)
+  return robotCommand;
+
+  //set robot command ;variable to empty to not resend single command
+
+
+}
+
+function commandReset()
+{
+  robotCommand['command'] = 'none'
+}
+//-----------------------------VOTE HANDLERS-----------------------------------
+
+//sends the vote data array back to the robot control center
+function voteDataSender(req){
+  return voteDict;
+}
 //VOTE COUNTER gather request converts it to vote and lgos it
 function voteHandler(req) {
   //console.log("vote Handler is running")
   //console.log(req.payload)
 //Convert request package to have color-id and cleans up the request
-  payload = JSON.stringify(req.payload)
-  color_id = payload.replace(/[{}:"]/g, "")
+  payload = JSON.stringify(req.payload);
+  color_id = payload.replace(/[{}:"]/g, "");
   //console.log(color_id)
 
-  votes = voteDict[color_id]
+  votes = voteDict[color_id];
 
-  votes = votes + 1
+  votes = votes + 1;
 
-  voteDict[color_id] = votes
+  voteDict[color_id] = votes;
 
-  console.log("vote for: " + color_id + ", " + voteDict[color_id])
+  console.log("vote for: " + color_id + ", " + voteDict[color_id]);
 
   //runs the first reset timer on an interval
   if (timerStart == false){
@@ -295,18 +318,7 @@ voteDict["g"]=0 ;
   console.log("resseting votes");
 }
 
-/*
-function colorQueryHandler(req) {
-  // Verify all requests.
-  const payload = verifyAndDecode(req.headers.authorization);
 
-  // Get the color for the channel from the payload and return it.
-  const { channel_id: channelId, opaque_user_id: opaqueUserId } = payload;
-  const currentColor = color(channelColors[channelId] || initialColor).hex();
-  verboseLog(STRINGS.sendColor, currentColor, opaqueUserId);
-  return currentColor;
-}
-*/
 
 function voteResetHandler(req) {
   console.log("Voter resethandler running")
@@ -320,6 +332,9 @@ function voteResetHandler(req) {
 }
 
 
+
+
+////---------------------------base code -----------------------
 function attemptColorBroadcast(channelId) {
   // Check the cool-down to determine if it's okay to send now.
   const now = Date.now();
@@ -411,11 +426,33 @@ function userIsInCooldown(opaqueUserId) {
     handler: voteHandler,
   });
 
+  
   // Handle a new viewer requesting the color.
   server.route({
     method: 'GET',
     path: '/color/query',
     handler: voteResetHandler,
+  });
+
+  //handle robot controlling code handler sends back vote details
+  server.route({
+    method: 'POST',
+    path: '/vote/data',
+    handler: voteDataSender,
+  });
+
+  
+  //handles reciveing data from robot control extension
+  server.route({
+    method: 'POST',
+    path: '/color/move',
+    handler: robotCommandHandler,
+  });
+  //Handle request for latest command from robot controller
+  server.route({
+    method: 'POST',
+    path: '/color/moveQuery',
+    handler: robotCommandSender,
   });
 
   // Start the server.
